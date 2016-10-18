@@ -9,9 +9,7 @@ class LinearSolver4 : public EulerSolver
     public:
         LinearSolver4();
         virtual ~LinearSolver4();
-        double DiffEquation(double x, double y){
-                return (y*y) - (x*x);
-            }
+        double DiffEquation(double x, double y);
 
     protected:
 

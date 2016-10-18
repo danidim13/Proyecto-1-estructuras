@@ -9,9 +9,7 @@ class LinearSolver1 : public EulerSolver
     public:
         LinearSolver1();
         virtual ~LinearSolver1();
-        double DiffEquation(double x, double y){
-                return -y;
-        }
+        double DiffEquation(double x, double y);
 };
 
 #endif // LINEARSOLVER1_H

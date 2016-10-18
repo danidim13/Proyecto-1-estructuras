@@ -9,3 +9,7 @@ LinearSolver4::~LinearSolver4()
 {
     //dtor
 }
+double LinearSolver4::DiffEquation(double x, double y)
+{
+	return (y*y) - (x*x);
+}
