@@ -1,3 +1,10 @@
+/** @file prueba_steps.cpp
+ * Prueba2.
+ * Recibe por linea de comandos:
+ * <num_pruebas> <prueba>
+ * donde prueba es un numero entre 1 y 4.
+ */
+
 #include <iostream>
 #include <LinearSolver1.h>
 #include <LinearSolver2.h>
@@ -11,12 +18,6 @@
 
 using namespace std;
 
-/**
- * Prueba1.
- * Recibe por linea de comandos:
- * <num_pruebas> <prueba>
- * donde prueba es un numero entre 1 y 4.
- */
 int main(int argc, char *argv[])
 {
     // Comparar tiempos de ejecucion para diferente step size
