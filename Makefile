@@ -16,7 +16,7 @@ Prueba2: pruebas/prueba_steps.cpp $(obj)
 	$(CC) -c -o $@ $<
 
 clean:
-	rm -f *.o *.out pruebas/*.out
+	rm -f *.o *.out pruebas/*.out Resultados/*.txt
 
 run: all
 	@echo "Corriendo Prueba1 ..."
