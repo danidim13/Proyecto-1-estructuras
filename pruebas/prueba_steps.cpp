@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
     int n_pruebas = atoi(argv[1]); // numero de pruebas
     char tipo_prueba = argv[2][0]; // LinearSolver a usar
     
-    int promedio = 30;
+    int promedio = 5;
 
     double *h_steps = new double[n_pruebas]; // Eje x de la grafica
     double exe_times[n_pruebas][promedio]; // Eje y de la grafica
@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
         // Aumentar el stepsize
             double h_s = 0.1/((double)i+1); 
             l1->setStepSize(h_s);
-            l1->setIntegrationArea(40);
+            l1->setIntegrationArea(50);
     
     	// Medir el tiempo de solucion del algoritmo
             clock_t begin = clock(); 
