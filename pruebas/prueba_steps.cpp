@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
         // Aumentar el stepsize
             double h_s = 0.1/((double)i+1); 
             l1->setStepSize(h_s);
-            l1->setIntegrationArea(50);
+            l1->setIntegrationArea(40);
     
     	// Medir el tiempo de solucion del algoritmo
             clock_t begin = clock(); 

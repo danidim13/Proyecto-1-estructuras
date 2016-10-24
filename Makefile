@@ -26,9 +26,9 @@ run: all
 	@./pruebas/Prueba1.out 500 4
 	@echo "Listo Prueba1!"
 	@echo "Corriendo Prueba2 ..."
-	@./pruebas/Prueba2.out 500 1
-	@./pruebas/Prueba2.out 500 2
-	@./pruebas/Prueba2.out 500 3
-	@./pruebas/Prueba2.out 500 4
+	@./pruebas/Prueba2.out 400 1
+	@./pruebas/Prueba2.out 400 2
+	@./pruebas/Prueba2.out 400 3
+	@./pruebas/Prueba2.out 400 4
 	@echo "Listo Prueba2!"
 	@mv prueba_*.txt Resultados

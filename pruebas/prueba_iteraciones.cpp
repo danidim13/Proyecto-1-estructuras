@@ -121,6 +121,7 @@ int main(int argc, char* argv[])
         exe_times_prom[i] = sum/promedio;
         outFile << exe_times_prom[i] << "\t" << x_finales[i] << "\t" << exe_sizes[i] << endl;
     }
+    
     delete[] exe_sizes;
     delete[] exe_times_prom;
     delete[] x_finales;
