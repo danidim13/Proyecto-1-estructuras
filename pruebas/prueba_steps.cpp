@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
     double *h_steps = new double[n_pruebas]; // Eje x de la grafica
     double exe_times[n_pruebas][promedio]; // Eje y de la grafica
     double *exe_sizes = new double[n_pruebas];
-    double exe_times_prom = new double[n_pruebas];
+    double *exe_times_prom = new double[n_pruebas];
 
     EulerSolver *l1;
     
@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
     } else {
         cout << "Error de argumentos, prueba inválida." << endl;
         delete[] h_steps;
-        delete[] exe_times;
+        delete[] exe_times_prom;
         delete[] exe_sizes;
         return -1;
     }
