@@ -1,0 +1,14 @@
+Se incluye un archivo Makefile con 3 targets.
+
+all:
+Compila los archivos fuente y genera los ejecutables de ambas pruebas, estos se llaman "Prueba1.out" y "Prueba2.out"
+
+run:
+Corre automáticamente ambas pruebas para las 4 ecuaciones diferenciales. Además guarda los archivos generados en el directorio Resultados.
+
+clean:
+Borra todos los archivos de compilación, ejecutables y resultados de las pruebas.
+
+También se incluye un archivo de configuración de doxygen. Para generar la documentación se debe correr el siguiente comando:
+
+$ doxygen Doxy.config
