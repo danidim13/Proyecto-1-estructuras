@@ -23,9 +23,12 @@ int main(int argc, char* argv[])
     
     int n_pruebas = atoi(argv[1]); // numero de pruebas
     char tipo_prueba = argv[2][0]; // LinearSolver a usar
+    
+    int promedio = 30;
 
     double *x_finales = new double[n_pruebas]; // Eje x de la grafica
-    double *exe_times = new double[n_pruebas]; // Eje y de la grafica
+    double exe_times[n_pruebas][promedio];
+    double *exe_times_prom = new double[n_pruebas]; // Eje y de la grafica
     double *exe_sizes = new double[n_pruebas]; 
 
     EulerSolver *l1;
@@ -62,7 +65,7 @@ int main(int argc, char* argv[])
     } else {
         cout << "Error de argumentos, prueba inválida." << endl;
         delete[] exe_sizes;
-        delete[] exe_times;
+        delete[] exe_times_prom;
         delete[] x_finales;
         return -1;
     }
@@ -75,39 +78,51 @@ int main(int argc, char* argv[])
 
     double *x_ptr, *y_ptr;
     int n_datos = 0;
+    
+    // Se corren las pruebas varias veces para
+    // promediar los resultados.
 
-    for(int i = 0; i<n_pruebas; i++){
-	    //
-	// Hacer el area de integracion mas grande
-        double x_final = 10 + ((double)i*2);              
-	//cout << "Iteracion: " << i << endl;
-	//cout << "Valor final: " << x_final << endl;
-
-        l1->setIntegrationArea(x_final);
-
-
-	// Medir el tiempo de solucion del algoritmo
-        clock_t begin = clock(); 
-        l1->solve();
-        clock_t end = clock();
-        double elapsed_secs = ((double)(end - begin)) / CLOCKS_PER_SEC;
-
-	    l1->getDataValues(x_ptr, y_ptr, n_datos);
-
-
-	// Asignar los valores correspondientes
-        exe_times[i] = elapsed_secs; 
-        x_finales[i] = x_final;
-	    exe_sizes[i] = n_datos;
-
-        // Finalmente, escribir los resultados en el archivo
-
-        outFile << exe_times[i] << "\t" << x_finales[i] << "\t" << exe_sizes[i] << endl;
-
+    double x_final;   
+    for(int p = 0; p < promedio; p++){
+        for(int i = 0; i < n_pruebas; i++){
+            x_final = 10 + ((double)i*2);    
+            	    //
+    	// Hacer el area de integracion mas grande
+          
+    	//cout << "Iteracion: " << i << endl;
+    	//cout << "Valor final: " << x_final << endl;
+    
+            l1->setIntegrationArea(x_final);
+    
+    
+    	// Medir el tiempo de solucion del algoritmo
+            clock_t begin = clock(); 
+            l1->solve();
+            clock_t end = clock();
+            double elapsed_secs = ((double)(end - begin)) / CLOCKS_PER_SEC;
+    
+    	    l1->getDataValues(x_ptr, y_ptr, n_datos);
+    
+    
+    	// Asignar los valores correspondientes
+            exe_times[i][p] = elapsed_secs;
+            if (p == 0) {
+                x_finales[i] = x_final;
+        	    exe_sizes[i] = n_datos;
+            }
+        }
     }
-
+    
+    for (int i = 0; i < n_pruebas; i++){
+        double sum = 0;
+        for (int p = 0; p < promedio; p++) {
+            sum += exe_times[i][p];
+        }
+        exe_times_prom[i] = sum/promedio;
+        outFile << exe_times_prom[i] << "\t" << x_finales[i] << "\t" << exe_sizes[i] << endl;
+    }
     delete[] exe_sizes;
-    delete[] exe_times;
+    delete[] exe_times_prom;
     delete[] x_finales;
     outFile.close();
     cout << "Finalizando pruebas!" << endl << endl;
